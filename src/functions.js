@@ -128,8 +128,97 @@ console.log(newProductName)
 console.log(newUnitPrice)
 console.log(newQuantity)
 /********************************************/
-
-
+// 1- JavaScript ile istediğiniz kadar sayı parametre gönderebileceğiniz bir fonksiyon yazınız. Bu fonksiyona gönderdiğiniz her sayı için çıktı olarak asal olup olmadığını yazınız.
+function findPrime(...numbers) {
+    let output = [];
+    numbers.forEach((number) => {
+      if (isItPrime(number)) {
+        output.push(number + ' is a prime number');
+      } else {
+        output.push(number + ' is a not prime number');
+      }
+    });
+    return output;
+  }
+  
+  function isItPrime(number) {
+    for (var i = 2; i < number; i++) {
+      if (number % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  console.log(findPrime(2, 5, 8, 21, 13));
+  
+  // 2- Parametre olarak girilen iki sayının arkadaş sayılar olup olmadığını bulan programı yazınız.
+  function findFriendNumber(number1, number2) {
+    let number1SumDivisors = divisorsOfNumber(number1);
+    let number2SumDivisors = divisorsOfNumber(number2);
+    if (number1SumDivisors == number2 && number2SumDivisors == number1) {
+      console.log(number1 + ' ' + number2 + ' Arkadaş sayılardır');
+      return true;
+    } else console.log(number1 + ' ' + number2 + ' Arkadaş değildir');
+    return false;
+  }
+  function divisorsOfNumber(number) {
+    let sumDivisors = 0;
+    for (var i = 0; i < number; i++) {
+      if (number % i == 0) {
+        sumDivisors += i;
+      }
+    }
+    return sumDivisors;
+  }
+  console.log(findFriendNumber(220, 284));
+  
+  // 3- 1000'e kadarki tüm mükemmel sayıları listeleyen programı yazınız.
+  function findPerfectfNum1To1000() {
+    let perfectNumArr = [];
+    for (let i = 1; i < 1000; i++) {
+      if (i === sumOfDiv(i)) {
+        perfectNumArr.push(i);
+      }
+    }
+    return perfectNumArr;
+  }
+  
+  function sumOfDiv(number) {
+    let sum = 0;
+    for (let i = 1; i < number; i++) {
+      if (number % i == 0) {
+        sum += i;
+      }
+    }
+    return sum;
+  }
+  console.log(findPerfectfNum1To1000());
+  
+  // 4- 1000'e kadarki tüm asal sayıları listeleyen programı yazınız.
+  function findPrimNum1To1000() {
+    let primeNumArr = [];
+    for (let i = 2; i <= 1000; i++) {
+      if (isPrime(i)) {
+        primeNumArr.push(i);
+      }
+    }
+    return primeNumArr;
+  }
+  
+  function isPrime(number) {
+    let count = 0;
+    for (let i = 1; i <= number; i++) {
+      if (number % i == 0) count++;
+    }
+    if (count > 2) {
+      return false;
+    }
+    return true;
+  }
+  console.log(findPrimNum1To1000());
+/********************************************/
+//08 Kasım 2021
 
 
 
